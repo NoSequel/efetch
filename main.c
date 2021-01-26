@@ -14,13 +14,13 @@ Color::Modifier secondary(Color::FG_RED);
 
 //method for executing a command and get the output
 std::string exec(const char* cmd) {
-    std::array<char, 64> buffer;
+    std::array<char, 32> buffer;
     std::string result;
 
     auto pipe = popen(cmd, "r");
 
     while(!feof(pipe)) {
-        if(fgets(buffer.data(), 64, pipe) != nullptr) {
+        if(fgets(buffer.data(), 32, pipe) != nullptr) {
             result += buffer.data();
         }
     }
@@ -54,6 +54,7 @@ int main() {
     checkOS();
 
     if(!os.empty()) {
+        std::cout << secondary << exec("echo $USER@$HOSTNAME");
         std::cout << primary << c_str(" os ~ ") << secondary << c_str(os) << std::endl; 
         std::cout << primary << c_str(" sh ~ ") << secondary << c_str(exec("echo $SHELL")); 
         std::cout << primary << c_str(" pkgs ~ ") << secondary << c_str(packageAmount);
