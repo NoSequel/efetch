@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/NoSequel/efetch/main/screenshot.png" width="40%" align="right">
+<img src="https://raw.githubusercontent.com/NoSequel/efetch/main/screenshots/screenshot.png" width="40%" align="right">
 <h1 align="center">efetch</h1>
 <p align="center">is a system information tool written in C++</p><br>
 
