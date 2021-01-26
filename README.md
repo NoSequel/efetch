@@ -15,4 +15,4 @@ Currently we support 2 OS' (1 untested).
 It is possible to edit the primary colors inside of the ``main.c`` file (``primary`` and ``secondary`` colors).
 
 ## Installation
-  ### You are able to run the ``compile.sh`` script in order to update and/or install ``efetch``
+  - You are able to run the ``compile.sh`` script in order to update and/or install ``efetch``
