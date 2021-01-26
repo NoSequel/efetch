@@ -18,10 +18,10 @@ It is possible to edit the primary colors inside of the ``main.c`` file (``prima
 
     It is possible to build this using ``g++``:
        
-       - ``g++ ./main.c``
+       - g++ ./main.c
 
 * ### Creating a symlink
 
     Using ``ln`` you can make a symlink so you can execute this program anywhere, for example:
        
-       - `ln ./a.out /bin/efetch`
+       - ln ./a.out /bin/efetch
