@@ -10,7 +10,7 @@ std::string kernelVersion;
 
 // color scheme
 Color::Modifier primary(Color::FG_DEFAULT);
-Color::Modifier secondary(Color::FG_RED);
+Color::Modifier secondary(Color::FG_BLUE);
 
 //method for executing a command and get the output
 std::string exec(const char* cmd) {
@@ -46,20 +46,16 @@ void checkOS() {
     }
 }
 
-const char* c_str(std::string str) {
-    return str.c_str();
-}
-
 int main() {
     checkOS();
 
     if(!os.empty()) {
         std::cout << secondary << exec("echo $USER@$HOSTNAME");
-        std::cout << primary << c_str(" os ~ ") << secondary << c_str(os) << std::endl; 
-        std::cout << primary << c_str(" sh ~ ") << secondary << c_str(exec("echo $SHELL")); 
-        std::cout << primary << c_str(" pkgs ~ ") << secondary << c_str(packageAmount);
-        std::cout << primary << c_str(" term ~ ") << secondary << exec("pstree -sA $$ | awk -F \"---\" '{print $2}'").substr(0, 10);
-        std::cout << primary << c_str(" kernel ~ ") << secondary << c_str(kernelVersion);       
+        std::cout << primary << " os ~ " << secondary << os << std::endl; 
+        std::cout << primary << " sh ~ " << secondary << exec("echo $SHELL"); 
+        std::cout << primary << " pkgs ~ " << secondary << packageAmount;
+        std::cout << primary << " term ~ " << secondary << exec("pstree -sA $$ | awk -F \"---\" '{print $2}'").substr(0, 10);
+        std::cout << primary << " kernel ~ " << secondary << kernelVersion;       
     }
 
 
