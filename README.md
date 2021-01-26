@@ -15,16 +15,4 @@ Currently we support 2 OS' (1 untested).
 It is possible to edit the primary colors inside of the ``main.c`` file (``primary`` and ``secondary`` colors).
 
 ## Installation
-* ### Building
-    It is possible to build this using ``g++``:
-       
-       - g++ ./main.c
-
-* ### Creating a symlink
-    Using ``ln`` you can make a symlink so you can execute this program anywhere, for example:
-       
-       - ln ./a.out /bin/efetch
-* ### Updating 
-    It is required to remove the old symlink to make a new one, so here's how to update it using ``ln``
-
-       - rm -rf /bin/efetch && g++ ./main.c && ln ./a.out /bin/efetch
+  ### You are able to run the ``compile.sh`` script in order to update and/or install ``efetch``
