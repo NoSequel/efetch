@@ -32,18 +32,27 @@ void checkOS() {
     os = exec("cat /etc/os-release");
     kernelVersion = exec("uname -r");
 
-    // check if the string contains the string "BSD"
+    // check if the OS description contains the string "BSD"
     if(os.find("BSD") != std::string::npos) {
+        // check if the OS description contains "FreeBSD"
         if(os.find("FreeBSD") != std::string::npos) {
             packageAmount = exec("pkg_info | wc -l");
             os = "FreeBSD/BSD";
+            return;
         }
+    // check if the OS description contains the string "Linux"
     } else if(os.find("Linux") != std::string::npos) {
+        // check if the OS description contains "Gentoo"
         if(os.find("Gentoo") != std::string::npos) {
             packageAmount = exec("cd /var/db/pkg && ls -d */* | wc -l");
             os = "Gentoo/Linux";
+            return;
         }
     }
+    // if the method hasn't returned yet, set the variables to fallback ones, because there is no supported OS found. 
+    packageAmount = exec("echo 0");
+    os = "Unknown";
+    std::cout << secondary << "No supported OS found." << std::endl;
 }
 
 int main() {
