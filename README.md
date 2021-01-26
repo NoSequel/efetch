@@ -27,4 +27,4 @@ It is possible to edit the primary colors inside of the ``main.c`` file (``prima
 * ### Updating 
     It is required to remove the old symlink to make a new one, so here's how to update it using ``ln``
 
-       ``- rm -rf /bin/efetch && g++ ./main.c && ln ./a.out /bin/efetch`` 
+       - rm -rf /bin/efetch && g++ ./main.c && ln ./a.out /bin/efetch
