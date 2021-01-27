@@ -12,7 +12,7 @@ Currently we support 2 OS' (1 untested).
     - FreeBSD/BSD (pkg)
 
 ## Configuration
-It is possible to edit the primary colors inside of the ``main.c`` file (``primary`` and ``secondary`` colors).
+There is a ``config.h`` file included with the source code where you can toggle certain fields and edit the current color scheme.
 
 ## Installation
   - You are able to run the ``compile.sh`` script in order to update and/or install ``efetch``

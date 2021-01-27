@@ -1,16 +1,12 @@
 #include <iostream>
 #include <unistd.h>
 #include <array>
-#include "color.h"
+#include "config.h"
 
 // variables
 std::string os;
 std::string packageAmount;
 std::string kernelVersion;
-
-// color scheme
-Color::Modifier primary(Color::FG_DEFAULT);
-Color::Modifier secondary(Color::FG_BLUE);
 
 //method for executing a command and get the output
 std::string exec(const char* cmd) {
@@ -52,19 +48,36 @@ void checkOS() {
     // if the method hasn't returned yet, set the variables to fallback ones, because there is no supported OS found. 
     packageAmount = exec("echo 0");
     os = "Unknown";
-    std::cout << secondary << "No supported OS found." << std::endl;
+    std::cout << secondaryColor << "No supported OS found." << std::endl;
 }
 
 int main() {
     checkOS();
 
     if(!os.empty()) {
-        std::cout << secondary << exec("echo $USER@$HOSTNAME");
-        std::cout << primary << " os ~ " << secondary << os << std::endl; 
-        std::cout << primary << " sh ~ " << secondary << exec("echo $SHELL"); 
-        std::cout << primary << " pkgs ~ " << secondary << packageAmount;
-        std::cout << primary << " term ~ " << secondary << exec("pstree -sA $$ | awk -F \"---\" '{print $2}'").substr(0, 10);
-        std::cout << primary << " kernel ~ " << secondary << kernelVersion;       
+        if(displayHostname) {
+            std::cout << secondaryColor << exec("echo $USER@$HOSTNAME");
+        }
+
+        if(displayOperatingSystem) {
+            std::cout << primaryColor << " os ~ " << secondaryColor << os << std::endl; 
+        }
+
+        if(displayShell) {
+            std::cout << primaryColor << " sh ~ " << secondaryColor << exec("echo $SHELL"); 
+        }
+
+        if(displayPackages) {
+            std::cout << primaryColor << " pkgs ~ " << secondaryColor << packageAmount;
+        }
+
+        if(displayTerminal) {
+            std::cout << primaryColor << " term ~ " << secondaryColor << exec("pstree -sA $$ | awk -F \"---\" '{print $2}'").substr(0, 10);
+        }
+
+        if(displayKernelVersion) {
+           std::cout << primaryColor << " kernel ~ " << secondaryColor << kernelVersion;       
+        }
     }
 
 
