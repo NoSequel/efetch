@@ -19,5 +19,6 @@ else
     echo "Making new symlink for /bin/efetch"
     # make a new symlink for efetch
     ln ./a.out /bin/efetch
+    rm -rf ./a.out
     echo "Finished."
 fi
