@@ -37,7 +37,7 @@ void checkOS() {
             return;
         }
     // check if the OS description contains the string "Linux"
-    } else if(os.find("Lineux") != std::string::npos) {
+    } else if(os.find("Linux") != std::string::npos) {
         // check if the OS description contains "Gentoo"
         if(os.find("Gentoo") != std::string::npos) {
             packageAmount = exec("cd /var/db/pkg && ls -d */* | wc -l");
