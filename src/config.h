@@ -22,3 +22,7 @@ static const bool displayPackages (true);
 
 // the terminal is retrieved using a pstree command and piping it through awk
 static const bool displayTerminal(true);
+
+// fallback variables if no OS was found
+static const char* osName("Gentoo/Linux");
+static const char* packageAmountCommand("cd /var/db/pkg && ls -d */* | wc -l");
