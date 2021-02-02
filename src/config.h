@@ -2,7 +2,7 @@
 
 // color scheme
 static const Color::Modifier primaryColor(Color::FG_DEFAULT);
-static const Color::Modifier secondaryColor(Color::FG_BLUE);
+static const Color::Modifier secondaryColor(Color::FG_RED);
 
 // toggleable fields
 // the hostname is retrieved using $HOSTNAME
@@ -19,9 +19,6 @@ static const bool displayShell(true);
 
 // the amount of packages is OS-specific
 static const bool displayPackages (true);
-
-// the terminal is retrieved using a pstree command and piping it through awk
-static const bool displayTerminal(true);
 
 // fallback variables if no OS was found
 static const char* osName("Gentoo/Linux");

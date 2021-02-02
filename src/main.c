@@ -70,10 +70,6 @@ int main() {
             std::cout << primaryColor << " pkgs ~ " << secondaryColor << packageAmount;
         }
 
-        if(displayTerminal) {
-            std::cout << primaryColor << " term ~ " << secondaryColor << exec("pstree -sA $$ | awk -F \"---\" '{print $2}'").substr(0, 10);
-        }
-
         if(displayKernelVersion) {
            std::cout << primaryColor << " kernel ~ " << secondaryColor << kernelVersion;       
         }
