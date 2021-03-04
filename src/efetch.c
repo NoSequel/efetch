@@ -20,7 +20,7 @@ std::string exec(const char* cmd) {
         }
     }
 
-    return result.substr(0, 24);
+    return result;
 }
 
 void checkOS() {
@@ -74,7 +74,7 @@ int getPackages() {
     }
 
     if(access("/usr/sbin/pkg_info", 0) == 0) {
-        packages += atoi(exec("pkg_info | wc -l"))
+        packages += atoi(exec("pkg_info | wc -l").c_str());
     }
 
     // fallback for if no package manager could be found, lists all programs
