@@ -50,6 +50,16 @@ void checkOS() {
         } else if(os.find("Void") != std::string::npos) {
             os = "Void/Linux";
             return;
+
+        // check if the OS description contains "Ubuntu"
+        } else if(os.find("Ubuntu") != std::string::npos) {
+            os = "Ubuntu/Linux";
+            return;
+
+        // check if the OS description contains "Debian"
+        } else if(os.find("Debian") != std::string::npos) {
+            os = "Debian/Linux";
+            return;
         }
     }
 
@@ -75,6 +85,10 @@ int getPackages() {
 
     if(access("/usr/sbin/pkg_info", 0) == 0) {
         packages += atoi(exec("pkg_info | wc -l").c_str());
+    }
+
+    if(access("/usr/bin/dpkg-query", 0) == 0) {
+        packages += atoi(exec("dpkg-query -f '.\n' -W | wc -l").c_str());
     }
 
     // fallback for if no package manager could be found, lists all programs
