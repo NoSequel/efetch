@@ -1,6 +1,6 @@
 #!/bin/bash
 
-g++ ./src/main.c
+g++ ./src/efetch.c
 
 if [ "$EUID" -ne 0 ] 
 then

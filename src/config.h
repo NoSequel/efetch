@@ -2,7 +2,7 @@
 
 // color scheme
 static const Color::Modifier primaryColor(Color::FG_DEFAULT);
-static const Color::Modifier secondaryColor(Color::FG_RED);
+static const Color::Modifier secondaryColor(Color::FG_BLUE);
 
 // toggleable fields
 // the hostname is retrieved using $HOSTNAME
@@ -22,4 +22,3 @@ static const bool displayPackages (true);
 
 // fallback variables if no OS was found
 static const char* osName("Gentoo/Linux");
-static const char* packageAmountCommand("cd /var/db/pkg && ls -d */* | wc -l");
