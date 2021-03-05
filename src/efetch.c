@@ -1,7 +1,9 @@
 #include <iostream>
 #include <unistd.h>
 #include <array>
+#include <regex>
 #include "config.h"
+
 
 // variables
 std::string os;
@@ -122,7 +124,7 @@ int main() {
         }
 
         if(displayShell) {
-            print("sh", exec("printf $SHELL").c_str());
+            print("sh", std::regex_replace(exec("printf $SHELL"), std::regex("\\/bin/"), "").c_str());
         }
 
         if(displayPackages) {
