@@ -5,9 +5,11 @@
 ``efetch`` was written by me to learn more about the C/C++ programming language, currently support for multiple operating systems is lacking, however it is pretty easy to add more operating systems. If you wish, you can open a [PR](https://github.com/NoSequel/efetch/pulls) to add more support and/or clean up code.
 
 ## OS Support
-Currently we support 4 OS' (3 untested).
+Currently we support 6 OS' (3 untested).
 * Linux:
     - Gentoo/Linux (Emerge)
+    - Ubuntu/Linux (dpkg)
+    - Debian/Linux (dpkg)
     - Arch/Linux (Pacman)
     - Void/Linux (xbps)
 * BSD:
