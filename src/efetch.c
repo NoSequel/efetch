@@ -35,34 +35,33 @@ void checkOS() {
         if(os.find("FreeBSD") != std::string::npos) {
             os = "FreeBSD/BSD";
             return;
-        }
-    // check if the OS description contains the string "Linux"
-    } else if(os.find("Linux") != std::string::npos) {
-        // check if the OS description contains "Gentoo"
-        if(os.find("Gentoo") != std::string::npos) {
-            os = "Gentoo/Linux";
-            return;
+        }    
+    
+    // check if the OS description contains "Gentoo"
+    } else if(os.find("Gentoo") != std::string::npos) {
+        os = "Gentoo/Linux";
+        return;
 
-        // check if the OS description contains "Arch"
-        } else if(os.find("Arch") != std::string::npos) {
-            os = "Arch/Linux";
-            return;
+    // check if the OS description contains "Arch"
+    } else if(os.find("Arch") != std::string::npos) {
+        os = "Arch/Linux";
+        return;
 
-        // check if the OS description contains "Void"
-        } else if(os.find("Void") != std::string::npos) {
-            os = "Void/Linux";
-            return;
 
-        // check if the OS description contains "Ubuntu"
-        } else if(os.find("Ubuntu") != std::string::npos) {
-            os = "Ubuntu/Linux";
-            return;
+    // check if the OS description contains "Void"
+    } else if(os.find("Void") != std::string::npos) {
+        os = "Void/Linux";
+        return;
 
-        // check if the OS description contains "Debian"
-        } else if(os.find("Debian") != std::string::npos) {
-            os = "Debian/Linux";
-            return;
-        }
+    // check if the OS description contains "Ubuntu"
+    } else if(os.find("Ubuntu") != std::string::npos) {
+        os = "Ubuntu/Linux";
+        return;
+
+    // check if the OS description contains "Debian"
+    } else if(os.find("Debian") != std::string::npos) {
+       os = "Debian/Linux";
+       return;
     }
 
     // if the method hasn't returned yet, set the variables to fallback ones, because there is no supported OS found. 
