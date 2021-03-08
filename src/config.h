@@ -12,4 +12,4 @@ static const bool displayShell(true);
 static const bool displayPackages(true);
 
 // fallback variables if no OS was found
-static const char* osName("Gentoo/Linux");
+static const char* osName("Unknown");
