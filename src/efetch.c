@@ -108,7 +108,7 @@ void print(const char* str1, const char* str2) {
         std::cout << primaryColor << " " << str1 << " ~ ";
     }
 
-    std::cout << secondaryColor << str2 << std::endl;
+    std::cout << secondaryColor << str2 << resetColor << std::endl;
 }
 
 int main() {

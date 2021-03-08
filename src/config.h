@@ -3,6 +3,7 @@
 // color scheme
 static const Color::Modifier primaryColor(Color::FG_DEFAULT);
 static const Color::Modifier secondaryColor(Color::FG_BLUE);
+static const Color::Modifier resetColor(Color::FG_WHITE);
 
 // toggleable fields
 static const bool displayHostname(true);
