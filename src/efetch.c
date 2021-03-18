@@ -29,73 +29,61 @@ void checkOS() {
     os = exec("cat /etc/os-release");
     kernelVersion = exec("echo -n \"$(uname -r)\"");
 
-    // check if the OS description contains the string "BSD"
-    if(os.find("BSD") != std::string::npos) {
-        // check if the OS description contains "FreeBSD"
-        if(os.find("FreeBSD") != std::string::npos) {
-            os = "FreeBSD/BSD";
-            return;
-        }    
-    
-    // check if the OS description contains "Gentoo"
+    // begin OS name checking
+    // BSD operating systems
+    if(os.find("FreeBSD") != std::string::npos) {
+        os = "FreeBSD"; 
+    // linux distros
     } else if(os.find("Gentoo") != std::string::npos) {
-        os = "Gentoo/Linux";
-        return;
-
-    // check if the OS description contains "Arch"
+        os = "Gentoo";
     } else if(os.find("Arch") != std::string::npos) {
-        os = "Arch/Linux";
-        return;
-
-
-    // check if the OS description contains "Void"
+        os = "Arch Linux";
     } else if(os.find("Void") != std::string::npos) {
-        os = "Void/Linux";
+        os = "Void Linux";
         return;
-
-    // check if the OS description contains "Ubuntu"
     } else if(os.find("Ubuntu") != std::string::npos) {
-        os = "Ubuntu/Linux";
-        return;
-
-    // check if the OS description contains "Debian"
+        os = "Ubuntu";
     } else if(os.find("Debian") != std::string::npos) {
-       os = "Debian/Linux";
-       return;
+       os = "Debian";
+    } else {
+        // if the method hasn't returned yet, set the variables to fallback ones, because there is no supported OS found. 
+        os = osName;
     }
-
-    // if the method hasn't returned yet, set the variables to fallback ones, because there is no supported OS found. 
-    os = osName;
 }
 
 // gets all packages for all supported operating systems
-int getPackages() {
-    int packages = 0;
+std::string getPackages() {
+    std::string packages = "";
 
     if(access("/usr/bin/emerge", 0) == 0) {
-       packages += atoi(exec("cd /var/db/pkg && ls -d */* | wc -l").c_str());
+       packages.append(exec("echo -n $(cd /var/db/pkg && ls -d */* | wc -l)"));
+       packages.append(" (emerge) ");
     }
 
     if(access("/usr/bin/pacman", 0) == 0) {
-       packages += atoi(exec("pacman -Qq | wc -l").c_str());
+       packages.append(exec("echo -n $(pacman -Qq | wc -l)"));
+       packages.append(" (pacman) ");
     }
 
     if(access("/usr/bin/xbps-install", 0) == 0) {
-        packages += atoi(exec("xbps-query -l | wc -l").c_str());
+        packages.append(exec("echo -n $(xbps-query -l | wc -l)"));
+        packages.append(" (xbps) ");
     }
 
     if(access("/usr/sbin/pkg_info", 0) == 0) {
-        packages += atoi(exec("pkg_info | wc -l").c_str());
+        packages.append(exec("echo -n $(pkg_info | wc -l)"));
+        packages.append(" (pkg) ");
     }
 
     if(access("/usr/bin/dpkg-query", 0) == 0) {
-        packages += atoi(exec("dpkg-query -f '.\n' -W | wc -l").c_str());
+        packages.append(exec("echo -n $(dpkg-query -f '.\n' -W | wc -l)"));
+        packages.append(" (dpkg) ");
     }
 
     // fallback for if no package manager could be found, lists all programs
     // installed under /usr/bin
-    if(packages == 0 && access("/usr/bin", 0) == 0) {
-        packages += atoi(exec("ls /usr/bin | wc -l").c_str());
+    if(packages.empty() && access("/usr/bin", 0) == 0) {
+        packages.append(exec("echo -n $(ls /usr/bin | wc -l)"));
     }
 
     return packages;
@@ -127,7 +115,7 @@ int main() {
         }
 
         if(displayPackages) {
-            print("pkgs", std::to_string(getPackages()).c_str());
+            print("pkgs", getPackages().c_str());
         }
 
         if(displayKernelVersion) {
