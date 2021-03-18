@@ -40,7 +40,6 @@ void checkOS() {
         os = "Arch Linux";
     } else if(os.find("Void") != std::string::npos) {
         os = "Void Linux";
-        return;
     } else if(os.find("Ubuntu") != std::string::npos) {
         os = "Ubuntu";
     } else if(os.find("Debian") != std::string::npos) {
