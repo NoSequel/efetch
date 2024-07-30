@@ -42,6 +42,8 @@ void checkOS() {
         os = "Void Linux";
     } else if(os.find("Ubuntu") != std::string::npos) {
         os = "Ubuntu";
+    } else if(os.find("Manjaro") != std::string::npos) {
+        os = "Manjaro";
     } else if(os.find("Debian") != std::string::npos) {
        os = "Debian";
     } else {
